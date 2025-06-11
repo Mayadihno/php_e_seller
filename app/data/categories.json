@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Headphones",
+        "image":"headphones.webp"
+    },
+     {
+        "id": 2,
+        "name": "Earbuds",
+        "image":"earbuds.webp"
+    },
+    {
+        "id": 3,
+        "name": "Power Banks",
+        "image":"power_banks.webp"
+    },
+    {
+        "id": 4,
+        "name": "Laptops",
+        "image":"laptops.webp"
+    },
+     {
+        "id": 5,
+        "name": "Fitness Bands",
+        "image":"fitness_brands.webp"
+    }, {
+        "id": 6,
+        "name": "Speaker",
+        "image":"speakers.webp"
+    },
+    {
+        "id": 7,
+        "name": "Charges",
+        "image":"charges.webp"
+    },
+     {
+        "id": 8,
+        "name": "Security Cams",
+        "image":"security_cams.webp"
+    },
+     {
+        "id": 9,
+        "name": "Photo Printers",
+        "image":"photo_printers.webp"
+    },
+     {
+        "id": 10,
+        "name": "Cameras",
+        "image":"cameras.webp"
+    }
+]
