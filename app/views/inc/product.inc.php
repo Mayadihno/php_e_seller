@@ -34,24 +34,26 @@
          <?php foreach ($products as $product): ?>
              <div class="col">
                  <div class="card border-0 shadow h-100" style="border-top-right-radius: 11px; border-top-left-radius: 11px; background-color: #FAFAFA;">
-                     <div class="card-img-top img-fluid position-relative">
-                         <?php $image = json_decode($product->image) ?>
-                         <img src="<?= BASE_URL ?>/<?= $image[0] ?>""
+                     <a class="" href="<?= BASE_URL ?>/product-details/<?= $product->id ?>">
+                         <div class="card-img-top img-fluid position-relative">
+                             <?php $image = json_decode($product->image) ?>
+                             <img src="<?= BASE_URL ?>/<?= $image[0] ?>""
                              class=" w-100 object-fit-contain"
-                             style="height: 300px; border-top-right-radius: 10px; border-top-left-radius: 10px;"
-                             alt="<?= $product->product_name ?>">
-                         <span class="position-absolute top-0 start-0 p-2 text-white fw-semibold fs-6"
-                             style="background-color: #525252; border-top-left-radius: 10px;">
-                             Sales
-                         </span>
-                     </div>
-                     <div class="card-body">
-                         <div class="d-flex justify-content-between">
-                             <h5 class="fw-semibold fs-6 mb-1"><?= $product->product_name ?></h5>
-                             <p class="fw-medium fs-6 mb-1"><?= $product->category ?></p>
+                                 style="height: 300px; border-top-right-radius: 10px; border-top-left-radius: 10px;"
+                                 alt="<?= $product->product_name ?>">
+                             <span class="position-absolute top-0 start-0 p-2 text-white fw-semibold fs-6"
+                                 style="background-color: #525252; border-top-left-radius: 10px;">
+                                 Sales
+                             </span>
                          </div>
-                         <h3 class="fw-medium fs-6"><?= formatPrice($product->price) ?></h3>
-                     </div>
+                         <div class="card-body">
+                             <div class="d-flex justify-content-between">
+                                 <h5 class="fw-semibold fs-6 mb-1"><?= $product->product_name ?></h5>
+                                 <p class="fw-medium fs-6 mb-1"><?= $product->category ?></p>
+                             </div>
+                             <h3 class="fw-medium fs-6"><?= formatPrice($product->price) ?></h3>
+                         </div>
+                     </a>
                      <form method="POST">
                          <input type="hidden" name="product_id" value="<?= $product->id ?>">
                          <input type="hidden" name="product_name" value="<?= $product->product_name ?>">

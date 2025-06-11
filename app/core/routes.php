@@ -19,6 +19,7 @@ $router->get('/logout', '/auth/logout.php');
 $router->get('/register', '/auth/register.php');
 $router->post('/register', '/auth/register.php');
 
+//profile
 $router->get('/profile/{id}', '/profile.php');
 $router->get('/profile/edit/{id}', '/profile.php');
 $router->get('/profile/delete/{cat}/{id}', '/profile.php');
@@ -36,6 +37,10 @@ $router->post('/admin/products/edit/{id}', '/admin/products.php');
 //cart
 $router->get('/cart', '/cart.php');
 $router->post('/cart', '/cart.php');
+
+//product details
+$router->get('/product-details/{id}', '/product.php');
+$router->post('/product-details/{id}', '/product.php');
 
 $router->get('/404', '/404.php');
 
