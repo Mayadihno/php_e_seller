@@ -47,8 +47,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tbody>
                 <?php foreach ($items as $item): ?>
                     <tr>
-                        <td><img src="<?= BASE_URL . '/' . $item['image'] ?>" alt="<?= $item['name'] ?>" style="width: 60px;"></td>
-                        <td><?= $item['name'] ?></td>
+                        <td>
+                            <a href="<?= BASE_URL . '/product-details/' . $item['id'] ?>">
+                                <img src="<?= BASE_URL . '/' . $item['image'] ?>" alt="<?= $item['name'] ?>" style="width: 60px;">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="<?= BASE_URL . '/product-details/' . $item['id'] ?>">
+                                <?= $item['name'] ?>
+                            </a>
+                        </td>
                         <td><?= formatPrice($item['price']) ?></td>
                         <td><?= $item['quantity'] ?></td>
                         <td><?= formatPrice($item['price'] * $item['quantity']) ?></td>
@@ -73,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="d-flex justify-content-between align-items-center mt-4">
             <h4>Total (<?= $totalQty ?> items): <strong><?= formatPrice($totalPrice) ?></strong></h4>
-            <a href="checkout.php" class="btn btn-primary btn-lg">Proceed to Checkout</a>
+            <a href="<?= BASE_URL ?>/checkout" class="btn btn-primary text-white btn-lg">Proceed to Checkout</a>
         </div>
     <?php endif ?>
 </div>

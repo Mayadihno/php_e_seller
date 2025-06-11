@@ -38,7 +38,7 @@ $count = $cart->getCartCount();
                     <a class="nav-link active fw-semibold fs-6" aria-current="page" href="<?= BASE_URL ?>/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold fs-6" href="shop.php">Shop</a>
+                    <a class="nav-link fw-semibold fs-6" href="<?= BASE_URL ?>/shop">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-semibold fs-6" href="about.php">About</a>

@@ -38,9 +38,16 @@ $router->post('/admin/products/edit/{id}', '/admin/products.php');
 $router->get('/cart', '/cart.php');
 $router->post('/cart', '/cart.php');
 
+//shop
+$router->get('/shop', '/shop.php');
+
 //product details
 $router->get('/product-details/{id}', '/product.php');
 $router->post('/product-details/{id}', '/product.php');
+
+//checkout
+$router->get('/checkout', '/checkout.php');
+$router->post('/checkout', '/checkout.php');
 
 $router->get('/404', '/404.php');
 
