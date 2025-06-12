@@ -14,7 +14,7 @@ foreach ($cartItems as $item) {
     $totalQty += $item['quantity'];
     $totalPrice += $item['price'] * $item['quantity'];
 }
-
+$ses->set('totalPrice', ($totalPrice + $dispatch_price))
 ?>
 <div class="container py-5">
     <div class="d-flex justify-content-center">
@@ -67,9 +67,15 @@ foreach ($cartItems as $item) {
                     </div>
                 <?php endforeach ?>
                 <hr>
+                <?php if ($dispatch_price): ?>
+                    <div class="d-flex justify-content-between pb-3">
+                        <p><strong>Subtotal: </strong><?= formatPrice($totalPrice) ?></p>
+                        <p><strong>Shipping: </strong><?= $dispatch_price > 0 ? formatPrice($dispatch_price) : 'Free' ?></p>
+                    </div>
+                <?php endif; ?>
                 <div class="d-flex justify-content-between">
                     <strong>Total</strong>
-                    <strong><?= formatPrice($totalPrice) ?></strong>
+                    <strong><?= $dispatch_price > 0  ? formatPrice($totalPrice + $dispatch_price) : formatPrice($totalPrice) ?></strong>
                 </div>
             </div>
         </div>

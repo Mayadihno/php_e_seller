@@ -24,24 +24,24 @@
  <div class="row mb-3">
      <div class="col-md-6">
          <label class="form-label">Address</label>
-         <input type="text" class="form-control" name="address" value="<?= oldValue('address', $ses->get('address') ?? '') ?>">
+         <input type="text" class="form-control" name="address" value="<?= oldValue('address', $ses->get('checkout_data')['address']  ?? '') ?>">
          <?= showError($errors, 'address') ?>
      </div>
      <div class="col-md-6">
          <label class="form-label">City</label>
-         <input type="text" class="form-control" name="city" value="<?= oldValue('city', $ses->get('city') ?? '') ?>">
+         <input type="text" class="form-control" name="city" value="<?= oldValue('city', $ses->get('checkout_data')['city'] ?? '') ?>">
          <?= showError($errors, 'city') ?>
      </div>
  </div>
  <div class="row mb-3">
      <div class="col-md-4">
          <label class="form-label">State</label>
-         <input type="text" class="form-control" name="state" value="<?= oldValue('state', $ses->get('state') ?? '') ?>">
+         <input type="text" class="form-control" name="state" value="<?= oldValue('state', $ses->get('checkout_data')['state'] ?? '') ?>">
          <?= showError($errors, 'state') ?>
      </div>
      <div class="col-md-4">
          <label class="form-label">Zip</label>
-         <input type="text" class="form-control" name="zip" value="<?= oldValue('zip', $ses->get('zip') ?? '') ?>">
+         <input type="text" class="form-control" name="zip" value="<?= oldValue('zip', $ses->get('checkout_data')['zip'] ?? '') ?>">
          <?= showError($errors, 'zip') ?>
      </div>
      <div class="col-md-4">

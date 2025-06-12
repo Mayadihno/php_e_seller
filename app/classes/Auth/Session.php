@@ -18,10 +18,18 @@ class Session
         $_SESSION[$this->userKey][$key] = $value;
     }
 
-    public function get(string $key)
+
+    public function set_many($key, $data = [])
+    {
+        $existingData = $this->get($key) ?? [];
+        $mergedData = array_merge($existingData, $data);
+        $_SESSION[$this->userKey][$key] = $mergedData;
+    }
+
+    public function get(string|array $key)
     {
         if (!empty($_SESSION[$this->userKey][$key])) {
-            return $_SESSION[$this->userKey][$key];
+            return $_SESSION[$this->userKey][$key] ?? [];
         }
         return null;
     }

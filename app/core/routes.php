@@ -48,6 +48,8 @@ $router->post('/product-details/{id}', '/product.php');
 //checkout
 $router->get('/checkout', '/checkout.php');
 $router->post('/checkout', '/checkout.php');
+$router->get('/checkout/success', '/checkout.php');
+
 
 $router->get('/404', '/404.php');
 

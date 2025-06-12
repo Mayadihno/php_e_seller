@@ -67,7 +67,6 @@ class Database
         $keys = array_keys($data);
         $sql = "insert into $table (" . implode(',', $keys) . ") values (:" . implode(',:', $keys) . ")";
         $this->query($sql, $data);
-        show($this->con->lastInsertId());
         return $this->con;
     }
 
