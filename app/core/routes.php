@@ -40,6 +40,7 @@ $router->post('/cart', '/cart.php');
 
 //shop
 $router->get('/shop', '/shop.php');
+$router->post('/shop', '/shop.php');
 
 //product details
 $router->get('/product-details/{id}', '/product.php');

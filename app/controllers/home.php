@@ -3,6 +3,7 @@
 use Core\Render;
 use Msc\Product;
 
+
 class Home extends Render
 {
     public function index()
