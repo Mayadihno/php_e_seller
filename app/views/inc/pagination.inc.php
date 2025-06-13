@@ -1,5 +1,5 @@
   <?php if ($totalPages > 1): ?>
-      <nav class="mt-3" aria-label="Page navigation example">
+      <nav class="mt-5" aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
               <?php if ($page > 1): ?>
                   <li class="page-item">
