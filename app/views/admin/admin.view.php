@@ -69,7 +69,7 @@
                     <ul class="list-group">
                         <?php foreach ($recentOrders ?? [] as $order): ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Order #<?= $order->id ?>
+                                Order #<?= substr($order->id, 0, 20) ?>
                                 <span class="badge bg-info"><?= ucfirst($order->order_status) ?></span>
                             </li>
                         <?php endforeach; ?>
