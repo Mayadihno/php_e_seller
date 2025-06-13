@@ -126,4 +126,9 @@ class Product extends Database
         $data['sku'] = generateSKU();
         return $data;
     }
+
+    function get_product_reviews($id)
+    {
+        return $this->query('select * from reviews where product_id = :product_id', ['product_id' => $id])->fetchAll(\PDO::FETCH_OBJ);
+    }
 }

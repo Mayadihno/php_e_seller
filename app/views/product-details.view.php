@@ -89,4 +89,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
             </form>
         </div>
     </div>
+
+    <?php if (!empty($reviews)): ?>
+        <div class="container mt-4">
+            <h4 class="mb-4 fw-bold">Product Reviews</h4>
+            <div class="row">
+                <?php foreach ($reviews as $review): ?>
+                    <?php if (!empty($review->review)): ?>
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-lg h-100 border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="card-title mb-0"><?= esc($review->product_name) ?></h5>
+                                        <small class="text-muted"><?= get_date($review->date_created) ?></small>
+                                    </div>
+
+                                    <p class="mb-2"><strong><?= esc($review->reviewer_name) ?>:</strong> <?= esc($review->review) ?></p>
+
+                                    <div class="mb-2">
+                                        <strong>Rating:</strong>
+                                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                                            <i class="fa<?= $i <= $review->rating ? 's' : 'r' ?> fa-star text-warning"></i>
+                                        <?php endfor; ?>
+                                        <span class="ms-2 text-muted">(<?= $review->rating ?>/5)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+
 </div>

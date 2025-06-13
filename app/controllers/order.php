@@ -26,6 +26,13 @@ class Order extends Render
     {
         $orders = new Orders();
         $orderData = $orders->get_order_by_id($id);
+
+        if (!empty($_POST)) {
+            $_POST['date_created'] = date('Y-m-d H:i:s');
+            $orders->insert(table: 'reviews', data: $_POST);
+            flashMessage('Review submitted successfully', 'success');
+            redirect('order/details/' . $id);
+        }
         $this->render(path: 'orders/order-details', data: [
             'title' => 'Order-Details',
             'order' => $orderData

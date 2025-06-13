@@ -57,6 +57,7 @@ $router->get('/checkout/success', '/checkout.php');
 //order
 $router->get('/order', '/order.php');
 $router->get('/order/details/{id}', '/order.php');
+$router->post('/order/details/{id}', '/order.php');
 
 
 $router->get('/404', '/404.php');

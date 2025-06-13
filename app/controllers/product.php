@@ -8,11 +8,14 @@ class Product extends Render
     public function index($id)
     {
         $product = new MscProduct();
-        $product = $product->get_product($id);
+        $prod = $product->get_product($id);
+
+        $reviews = $product->get_product_reviews($id);
 
         $this->render(path: 'product-details', data: [
-            'title' => "Product Details - " . $product->product_name,
-            'product' => $product
+            'title' => "Product Details - " . $prod->product_name,
+            'product' => $prod,
+            'reviews' => $reviews
         ]);
     }
 }

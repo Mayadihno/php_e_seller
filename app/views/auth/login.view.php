@@ -77,7 +77,7 @@
                 flash.style.opacity = "0";
                 setTimeout(() => flash.remove(), 500);
             }
-        }, 20000);
+        }, 5000);
     </script>
 </body>
 
