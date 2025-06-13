@@ -58,7 +58,6 @@ class Database
     public function fetchAll(string $table, array $data = [], int $limit = 10, int $offset = 0)
     {
         $sql = "select * from $table order by date_created desc limit $limit offset $offset";
-        show($sql);
         return $this->query($sql, $data)->fetchAll(PDO::FETCH_OBJ);
     }
 

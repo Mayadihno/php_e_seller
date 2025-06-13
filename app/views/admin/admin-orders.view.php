@@ -1,6 +1,6 @@
 <?php if (!empty($orderData)): ?>
     <div class="container mt-5">
-        <h2 class="mb-4">My Orders</h2>
+        <h2 class="mb-4 text-center py-2">All Orders</h2>
         <table class="table table-bordered table-hover table-responsive table-striped">
             <thead class="table-dark text-white">
                 <tr>
@@ -28,25 +28,25 @@
                         <td><?= $totalQty ?></td>
                         <td><?= ucfirst($order->payment_method) ?></td>
                         <td><?= ucfirst($order->dispatch_method) ?></td>
-                        <?php
-                        $statusColors = [
-                            'pending'          => 'bg-secondary',
-                            'processing'       => 'bg-warning text-dark',
-                            'shipped'          => 'bg-info text-dark',
-                            'out for delivery' => 'bg-primary',
-                            'delivered'        => 'bg-success',
-                            'cancelled'        => 'bg-danger'
-                        ];
-                        $badgeClass = $statusColors[$order->order_status] ?? 'bg-dark';
-                        ?>
                         <td>
+                            <?php
+                            $statusColors = [
+                                'pending'          => 'bg-secondary',
+                                'processing'       => 'bg-warning text-dark',
+                                'shipped'          => 'bg-info text-dark',
+                                'out for delivery' => 'bg-primary',
+                                'delivered'        => 'bg-success',
+                                'cancelled'        => 'bg-danger'
+                            ];
+                            $badgeClass = $statusColors[$order->order_status] ?? 'bg-dark';
+                            ?>
                             <span class="badge <?= $badgeClass ?>">
                                 <?= ucfirst($order->order_status) ?>
                             </span>
                         </td>
                         <td><?= get_date($order->date_created) ?></td>
                         <td>
-                            <a href="<?= BASE_URL ?>/order/details/<?= $order->id ?>" class="btn btn-sm btn-primary text-white">View</a>
+                            <a href="<?= BASE_URL ?>/admin/all-order/details/<?= $order->id ?>" class="btn btn-sm btn-primary text-white">View</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

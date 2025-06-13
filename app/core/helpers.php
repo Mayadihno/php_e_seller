@@ -173,7 +173,7 @@ function get_countries()
 {
 
     $db = new Core\Database();
-    $countries  = $db->fetchAll('country');
+    $countries  = $db->query("SELECT * FROM country", [])->fetchAll(\PDO::FETCH_OBJ);
 
     if (!empty($countries)) {
         return (object)$countries;

@@ -116,7 +116,7 @@ $session = new Session();
                 flash.style.opacity = "0";
                 setTimeout(() => flash.remove(), 500);
             }
-        }, 20000);
+        }, 8000);
     </script>
 </body>
 

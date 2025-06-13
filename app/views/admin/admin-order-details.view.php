@@ -12,15 +12,15 @@ $badgeClass = $statusColors[$order->order_status] ?? 'bg-dark';
 ?>
 
 
-
-<div class="container py-5">
+<div class="container pb-5">
     <div class="d-flex align-items-center">
-        <a href="<?= BASE_URL ?>/order" class="btn btn-outline-secondary">
+        <a href="<?= BASE_URL ?>/admin/all-order" class="btn btn-outline-secondary">
             <i class="fa-solid fa-arrow-left"></i>
             <span>Back</span>
         </a>
         <h2 class="ms-4 fw-bold">Order Details</h2>
     </div>
+    <?= flashMessage(delete: true); ?>
 
     <!-- Order Summary -->
     <div class="card mb-4">
@@ -101,5 +101,26 @@ $badgeClass = $statusColors[$order->order_status] ?? 'bg-dark';
             <h5><strong>Total Paid:</strong> <?= formatPrice($order->total_price) ?></h5>
         </div>
     </div>
+
+    <!-- Change Order Status Form -->
+    <?php if ($order->order_status != 'delivered'): ?>
+        <form method="POST" class="mt-3">
+            <div class="mb-3">
+                <label for="order_status" class="form-label"><strong>Change Order Status</strong></label>
+                <select class="form-select" id="order_status" name="order_status" required>
+                    <?php
+                    $statuses = ['pending', 'processing', 'shipped', 'out for delivery', 'delivered', 'cancelled'];
+                    foreach ($statuses as $status):
+                    ?>
+                        <option value="<?= $status ?>" <?= $order->order_status === $status ? 'selected' : '' ?>>
+                            <?= ucfirst($status) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <input type="hidden" name="order_id" value="<?= esc($order->id) ?>">
+            <button type="submit" class="btn btn-primary">Update Status</button>
+        </form>
+    <?php endif; ?>
 
 </div>
