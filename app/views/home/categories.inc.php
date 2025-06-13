@@ -3,7 +3,7 @@
     <?php $categories = json_decode(file_get_contents(__DIR__ . '/../../data/categories.json')); ?>
     <div class="d-flex justify-content-between align-items-center">
         <?php foreach ($categories as $category):  ?>
-            <a href="<?= BASE_URL ?>/category/?<?= http_build_query(['category' => $category->name]) ?>">
+            <a href="<?= BASE_URL ?>/category?<?= http_build_query(['category' => $category->name]) ?>">
                 <div class="d-flex flex-column align-items-center" style="cursor: pointer">
                     <img src="<?= BASE_URL  ?>/assets/categories/<?= $category->image ?>" class="w-50" alt="<?= $category->name ?>">
                     <h5 class="fs-6"><?= $category->name ?></h5>

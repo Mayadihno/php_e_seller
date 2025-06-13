@@ -59,6 +59,10 @@ $router->get('/order', '/order.php');
 $router->get('/order/details/{id}', '/order.php');
 $router->post('/order/details/{id}', '/order.php');
 
+//category
+$router->get('/category', '/category.php');
+$router->post('/category', '/category.php');
+
 
 $router->get('/404', '/404.php');
 

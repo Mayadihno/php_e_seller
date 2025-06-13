@@ -131,4 +131,8 @@ class Product extends Database
     {
         return $this->query('select * from reviews where product_id = :product_id', ['product_id' => $id])->fetchAll(\PDO::FETCH_OBJ);
     }
+    function get_products_by_category($category)
+    {
+        return $this->query('select * from products where category = :category', ['category' => $category])->fetchAll(\PDO::FETCH_OBJ);
+    }
 }
