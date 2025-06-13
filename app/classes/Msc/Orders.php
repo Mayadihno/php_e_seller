@@ -46,6 +46,18 @@ class Orders extends Database
         return $orderId;
     }
 
+    public function get_orders_by_user_id($id)
+    {
+        $result = $this->fetchByValue(table: 'orders', data: ['users_id' => $id], where: 'users_id = :users_id', mode: 'all');
+        return $result;
+    }
+
+    public function get_order_by_id($id)
+    {
+        $result = $this->fetch(table: 'orders', data: ['id' => $id]);
+        return $result;
+    }
+
     public function make_order_id($data)
     {
         $data['id'] = make_uniqueid();

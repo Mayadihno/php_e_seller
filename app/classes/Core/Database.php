@@ -45,15 +45,20 @@ class Database
         $sql = "select * from $table where id = :id";
         return $this->query($sql, $data)->fetch(PDO::FETCH_OBJ);
     }
-    public function fetchByValue(string $table, array $data = [], string $where)
+    public function fetchByValue(string $table, array $data = [], string $where, string $mode = 'one')
     {
         $sql = "select * from $table where $where";
-        return $this->query($sql, $data)->fetch(PDO::FETCH_OBJ);
+        if ($mode === 'all') {
+            return $this->query($sql, $data)->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return $this->query($sql, $data)->fetch(PDO::FETCH_OBJ);
+        }
     }
 
     public function fetchAll(string $table, array $data = [], int $limit = 10, int $offset = 0)
     {
         $sql = "select * from $table order by date_created desc limit $limit offset $offset";
+        show($sql);
         return $this->query($sql, $data)->fetchAll(PDO::FETCH_OBJ);
     }
 
