@@ -74,7 +74,7 @@ $count = $cart->getCartCount();
                                 <?= $session->user('first_name'); ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<?= BASE_URL ?>/profile/<?= $session->user('id'); ?>">Profile</a></li>
+                                <li><a class="dropdown-item" href="<?= $session->access('admin') ? BASE_URL . '/admin/profile/' . $session->user('id') : BASE_URL . '/profile/' . $session->user('id') ?>">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?= BASE_URL ?>/order">Orders</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout">Logout</a></li>

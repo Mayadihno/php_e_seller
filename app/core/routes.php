@@ -22,7 +22,7 @@ $router->post('/register', '/auth/register.php');
 //profile
 $router->get('/profile/{id}', '/profile.php');
 $router->get('/profile/edit/{id}', '/profile.php');
-$router->get('/profile/delete/{cat}/{id}', '/profile.php');
+$router->post('/profile/edit/{id}', '/profile.php');
 
 //admin
 $router->get('/admin', '/admin/admin.php');
