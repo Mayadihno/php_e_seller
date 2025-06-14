@@ -24,7 +24,6 @@ class Login extends Render
                 $user = new User();
                 if ($user = $user->login($_POST)) {
                     unset($user->password);
-
                     $session->auth($user);
                     flashMessage(mode: 'success', msg: 'You have successfully logged in.');
                     redirect('');

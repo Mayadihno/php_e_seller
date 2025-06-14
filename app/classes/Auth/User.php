@@ -27,6 +27,7 @@ class User extends Database
         'gender',
         'password',
         'country_id',
+        'image',
     ];
     protected $beforeInsert = [
         'make_user_id',
@@ -66,6 +67,16 @@ class User extends Database
             return $user;
         }
         return false;
+    }
+
+    public function update_user_by_id($id, array $data)
+    {
+        foreach ($data as $key => $value) {
+            if (!in_array($key, $this->allowedUpdateColumns)) {
+                unset($data[$key]);
+            }
+        }
+        return  $this->update('users', $data, 'id = :id', ['id' => $id]);
     }
 
     public function make_user_id($data)
