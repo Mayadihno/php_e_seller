@@ -98,7 +98,7 @@ $session = new Session();
             <a href="<?= BASE_URL ?>/admin/upload-product"><i class="fas fa-upload me-2"></i> Upload Product</a>
             <a href="<?= BASE_URL ?>/admin/all-order"><i class="fas fa-film me-2"></i> All order</a>
             <a href="<?= BASE_URL ?>/admin/create-discount"><i class="fas fa-chart-bar me-2"></i> Create Discount</a>
-            <a href="<?= BASE_URL ?>/admin/profile"><i class="fas fa-user me-2"></i> Profile</a>
+            <a href="<?= BASE_URL ?>/admin/profile/<?= $session->user("id") ?>"><i class="fas fa-user me-2"></i> Profile</a>
             <a href="<?= BASE_URL ?>/admin/settings"><i class="fas fa-cog me-2"></i> Settings</a>
         </div>
     </div>

@@ -36,6 +36,9 @@ $router->post('/admin/products/edit/{id}', '/admin/products.php');
 $router->get('/admin/all-order', '/admin/admin_orders.php');
 $router->get('/admin/all-order/details/{id}', '/admin/admin_orders.php');
 $router->post('/admin/all-order/details/{id}', '/admin/admin_orders.php');
+$router->get('/admin/profile/{id}', '/admin/profile.php');
+$router->get('/admin/profile/edit/{id}', '/admin/profile.php');
+$router->post('/admin/profile/edit/{id}', '/admin/profile.php');
 
 //cart
 $router->get('/cart', '/cart.php');
