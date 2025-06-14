@@ -3,6 +3,10 @@
 use Auth\Session;
 
 $session = new Session();
+$currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$scriptName = dirname($_SERVER['SCRIPT_NAME']);
+$route = preg_replace('#^' . preg_quote($scriptName) . '#', '', $currentPath);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +66,10 @@ $session = new Session();
             z-index: 999;
         }
 
+        .active {
+            background-color: #f1f1f1;
+        }
+
         .card {
             margin: 10px;
             vertical-align: top;
@@ -93,13 +101,13 @@ $session = new Session();
 
         </a>
         <div style="overflow-y: scroll;max-height: 50vh;">
-            <a href="<?= BASE_URL ?>/admin" class="active"><i class="fas fa-home me-2"></i> Dashboard</a>
-            <a href="<?= BASE_URL ?>/admin/products""><i class=" fas fa-tv me-2"></i> All Products</a>
-            <a href="<?= BASE_URL ?>/admin/upload-product"><i class="fas fa-upload me-2"></i> Upload Product</a>
-            <a href="<?= BASE_URL ?>/admin/all-order"><i class="fas fa-film me-2"></i> All order</a>
-            <a href="<?= BASE_URL ?>/admin/create-discount"><i class="fas fa-chart-bar me-2"></i> Create Discount</a>
-            <a href="<?= BASE_URL ?>/admin/profile/<?= $session->user("id") ?>"><i class="fas fa-user me-2"></i> Profile</a>
-            <a href="<?= BASE_URL ?>/admin/settings"><i class="fas fa-cog me-2"></i> Settings</a>
+            <a href="<?= BASE_URL ?>/admin" class="<?= $route == '/admin' ? 'active' : '' ?>"><i class="fas fa-home me-2"></i> Dashboard</a>
+            <a class="<?= $route == '/admin/products' ? 'active' : '' ?>" href="<?= BASE_URL ?>/admin/products"><i class=" fas fa-tv me-2"></i> All Products</a>
+            <a class="<?= $route == '/admin/upload-product' ? 'active' : '' ?>" href="<?= BASE_URL ?>/admin/upload-product"><i class="fas fa-upload me-2"></i> Upload Product</a>
+            <a class="<?= $route == '/admin/all-order' ? 'active' : '' ?>" href="<?= BASE_URL ?>/admin/all-order"><i class="fas fa-film me-2"></i> All order</a>
+            <a class="<?= $route == '/admin/create-discount' ? 'active' : '' ?>" href="<?= BASE_URL ?>/admin/create-discount"><i class="fas fa-chart-bar me-2"></i> Create Discount</a>
+            <a class="<?= $route == '/admin/profile/' . $session->user("id") ? 'active' : '' ?>" href="<?= BASE_URL ?>/admin/profile/<?= $session->user("id") ?>"><i class="fas fa-user me-2"></i> Profile</a>
+            <a class="<?= $route == '/admin/settings' ? 'active' : '' ?>" href="<?= BASE_URL ?>/admin/settings"><i class="fas fa-cog me-2"></i> Settings</a>
         </div>
     </div>
     <div class="main-content">
