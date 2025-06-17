@@ -16,9 +16,9 @@
                 <img src="https://cdn.vectorstock.com/i/1000v/43/22/shopping-cart-logo-design-vector-21804322.jpg" alt="Your Logo" width="32" height="32" class="d-inline-block align-text-top me-2">
                 <span class="italic fw-4">E-seller</span>
             </a>
-            <h4 class="fw-bold">Sign In</h4>
+            <?= flashMessage(delete: true); ?>
+            <h4 class="fw-bold">Forget Password</h4>
         </div>
-        <?= flashMessage(delete: true); ?>
 
         <?php if (!empty($errors['general'])): ?>
             <div class="alert alert-danger text-center" id="flash-message">
@@ -38,33 +38,11 @@
                     placeholder="Enter your email" />
                 <?= showError($errors, 'email') ?>
             </div>
-
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    name="password"
-                    value="<?= oldValue('password') ?>"
-                    placeholder="Enter your password" />
-                <?= showError($errors, 'email') ?>
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="remember" />
-                    <label class="form-check-label" for="remember">Remember me</label>
-                </div>
-                <a href="<?= BASE_URL ?>/forget-password" class="small text-decoration-none">Forgot password?</a>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
 
         <div class="text-center mt-3">
-            <small>Don't have an account? <a href="<?= BASE_URL ?>/register" class="text-decoration-none">Register</a></small>
+            <small>Already have an account? <a href="<?= BASE_URL ?>/login" class="text-decoration-none">Login</a></small>
         </div>
     </div>
 

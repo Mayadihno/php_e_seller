@@ -19,6 +19,9 @@ $router->get('/logout', '/auth/logout.php');
 $router->get('/register', '/auth/register.php');
 $router->post('/register', '/auth/register.php');
 
+//forget password 
+$router->get('/forget-password', '/auth/forgetPassword.php');
+$router->post('/forget-password', '/auth/forgetPassword.php');
 //profile
 $router->get('/profile/{id}', '/profile.php');
 $router->get('/profile/edit/{id}', '/profile.php');
