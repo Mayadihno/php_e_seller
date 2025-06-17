@@ -16,4 +16,4 @@
 
 <body>
     <main>
-        <?php require '../app/views/inc/nav.inc.php'; ?>
+        <?php require './app/views/inc/nav.inc.php'; ?>

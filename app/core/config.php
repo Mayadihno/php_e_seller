@@ -13,3 +13,5 @@ define('DB_PASS', '');
 
 define('UNIQUE_KEY', 'ekwrjefsdkj');
 define('RANDOM', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+
+//&HO7~x)-;]PEII]V

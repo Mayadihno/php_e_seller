@@ -9,7 +9,7 @@ $cart = new Cart();
 $count = $cart->getCartCount();
 
 ?>
-<?php require '../app/views/inc/top.inc.php'; ?>
+<?php require './app/views/inc/top.inc.php'; ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top shadow-sm">
     <div class="container-fluid px-3">
         <!-- Logo + Brand Name -->

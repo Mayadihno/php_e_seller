@@ -4,8 +4,8 @@ namespace Core;
 
 class Render
 {
-    protected string $layout = '../app/views/layouts/main.layout.php';
-    protected string $viewBasePath = '../app/views/';
+    protected string $layout = './app/views/layouts/main.layout.php';
+    protected string $viewBasePath = './app/views/';
 
     public function setLayout(string $layoutName): void
     {

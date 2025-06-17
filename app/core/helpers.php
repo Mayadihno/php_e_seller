@@ -1,7 +1,7 @@
 <?php
 // Initialize the application
 spl_autoload_register(function ($className) {
-    $files = '../app/classes/' . str_replace('\\', '/', $className) . '.php';
+    $files = './app/classes/' . str_replace('\\', '/', $className) . '.php';
     if (file_exists($files)) {
         require $files;
     } else {

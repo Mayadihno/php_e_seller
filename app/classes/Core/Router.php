@@ -49,7 +49,7 @@ class Router
 
                 $params = array_combine($keyMatches[1], $varMatched);
 
-                $file = '../app/controllers' . $route['controller'];
+                $file = './app/controllers' . $route['controller'];
                 if (file_exists($file)) {
                     require_once $file;
                     $controllerName = ucfirst(basename($route['controller'], '.php'));
