@@ -22,6 +22,11 @@ $router->post('/register', '/auth/register.php');
 //forget password 
 $router->get('/forget-password', '/auth/forgetPassword.php');
 $router->post('/forget-password', '/auth/forgetPassword.php');
+
+// reset password
+$router->get('/reset-password', '/auth/ResetPassword.php');
+$router->post('/reset-password', '/auth/ResetPassword.php');
+
 //profile
 $router->get('/profile/{id}', '/profile.php');
 $router->get('/profile/edit/{id}', '/profile.php');

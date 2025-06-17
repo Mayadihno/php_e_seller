@@ -28,6 +28,8 @@ class User extends Database
         'password',
         'country_id',
         'image',
+        'reset_token',
+        'reset_expires',
     ];
     protected $beforeInsert = [
         'make_user_id',
