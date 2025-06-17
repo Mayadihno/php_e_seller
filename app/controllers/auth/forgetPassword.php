@@ -28,11 +28,11 @@ class ForgetPassword extends Render
                     data: ['email' => $_POST['email']]
                 );
                 if ($res) {
-                   
+
                     // Generate token and expiration
                     $token = bin2hex(random_bytes(32));
                     $expires = date('Y-m-d H:i:s', time() + 1800); // expires in 30 minutes
-                   
+
                     // Save token and expiration in DB
                     $user->update_user_by_id($res->id, [
                         'reset_token' => $token,
@@ -62,7 +62,7 @@ class ForgetPassword extends Render
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'mayadihno@gmail.com';
-            $mail->Password   = 'xxmu rqwt vmih cxtc';
+            $mail->Password   = '';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 

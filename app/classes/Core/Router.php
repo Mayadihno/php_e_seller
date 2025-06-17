@@ -25,12 +25,14 @@ class Router
     public function run(): void
     {
         $method = $_SERVER['REQUEST_METHOD'];
-        $requestUri = rtrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') ?: '/';
-        $pathURL = str_replace(dirname($_SERVER['SCRIPT_NAME']), '', $requestUri);
 
-        if ($pathURL === '') {
-            $pathURL = '/';
-        }
+        // Extract path from URI (e.g., /shop, /login)
+        $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+        // Remove script directory if app is in a subfolder
+        $scriptDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+        $pathURL = preg_replace('#^' . preg_quote($scriptDir, '#') . '#', '', $requestUri);
+        $pathURL = rtrim($pathURL, '/') ?: '/';
 
         if (!isset($this->routes[$method])) {
             http_response_code(405);
@@ -43,13 +45,12 @@ class Router
             $pattern = '#^' . $pattern . '$#';
 
             if (preg_match($pattern, $pathURL, $varMatched)) {
-
                 array_shift($varMatched); // remove full match
                 preg_match_all("#\{([\w-]+)\}#", $route['uri'], $keyMatches);
 
                 $params = array_combine($keyMatches[1], $varMatched);
 
-                $file = './app/controllers' . $route['controller'];
+                $file = './app/controllers/' . ltrim($route['controller'], '/');
                 if (file_exists($file)) {
                     require_once $file;
                     $controllerName = ucfirst(basename($route['controller'], '.php'));
@@ -59,11 +60,10 @@ class Router
                         echo "Controller class $controllerName not found in $file";
                         return;
                     }
+
                     $controller = new $controllerName();
 
-                    // Extract method name from URL and route
                     $methodName = $this->extractMethod($pathURL, $route['uri'], $controller);
-
                     if (!method_exists($controller, $methodName)) {
                         http_response_code(500);
                         echo "Method '$methodName' not found in controller '$controllerName'";
@@ -89,7 +89,6 @@ class Router
         $pathSegments = explode('/', trim($pathURL, '/'));
         $routeSegments = explode('/', trim($routeUri, '/'));
 
-        // Determine method as the first segment in $pathURL not matched by route pattern placeholder
         foreach ($routeSegments as $i => $segment) {
             if (!str_starts_with($segment, '{') && isset($pathSegments[$i])) {
                 $possibleMethod = str_replace('-', '_', $pathSegments[$i]);
@@ -99,7 +98,6 @@ class Router
             }
         }
 
-        // Fallback
         return 'index';
     }
 }
